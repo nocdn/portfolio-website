@@ -1,0 +1,99 @@
+@import url("https://fonts.cdnfonts.com/css/sf-mono");
+@import url("https://fonts.cdnfonts.com/css/sf-pro-display");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "SF Mono", sans-serif;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  height: 100dvh;
+  width: 100dvw;
+}
+
+h4 {
+  font-size: 1.3rem;
+  font-family: "SF Pro Display", sans-serif;
+  font-weight: 550;
+  letter-spacing: 0.8px;
+}
+
+.sidebar-header {
+  height: 35%;
+  display: flex;
+
+  align-items: flex-end;
+
+  img {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+  }
+}
+
+.sidebar {
+  height: 100%;
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.sidebar-nav {
+  a {
+    text-decoration: none;
+    // color: rgb(24, 23, 32);
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.sidebar-item {
+  color: rgb(24, 23, 32);
+}
+
+.sidebar-selected {
+  color: rgb(144, 31, 56);
+  font-weight: 600;
+  //   padding: 0.5rem 1rem;
+}
+
+.main-content {
+  padding: 8rem 4rem 0rem 4rem;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+
+  ul {
+    padding-left: 1rem;
+  }
+}
+
+.markdown-text {
+  opacity: 0.4;
+  color: darkgray;
+}
+
+.content-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  span {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+}
+
+.hidden-content {
+  display: none;
+}
