@@ -8,9 +8,9 @@ sidebarItems[0].innerText = `> ${sidebarItems[0].innerText}`;
 sidebarItems[0].classList.add("sidebar-selected");
 contentPages[0].classList.remove("hidden-content");
 
-// Function to apply the hacked letters effect
+// Hacked letters effect from Hyperplexed on YT
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let interval; // No need to initialize here since it's reassigned
+let interval;
 
 function applyHackedEffect(h1Element) {
   if (!h1Element.dataset.value) {
@@ -39,7 +39,7 @@ function applyHackedEffect(h1Element) {
   }, 15);
 }
 
-// Apply the effect on page load
+// apply effect on page load
 window.onload = () => {
   const initialHeader = document.querySelector(
     ".content:not(.hidden-content) h1"
@@ -62,7 +62,7 @@ document.addEventListener("keydown", (e) => {
     let newIndex;
 
     if (e.key === "ArrowDown") {
-      // Sidebar update
+      // sidebar update
       sidebarItems[selectedItemIndex].innerText =
         sidebarItems[selectedItemIndex].innerText.slice(2);
       sidebarItems[selectedItemIndex].classList.remove("sidebar-selected");
@@ -72,7 +72,7 @@ document.addEventListener("keydown", (e) => {
       ].innerText = `> ${sidebarItems[newIndex].innerText}`;
       sidebarItems[newIndex].classList.add("sidebar-selected");
     } else if (e.key === "ArrowUp") {
-      // Sidebar update
+      // sidebar update
       sidebarItems[selectedItemIndex].innerText =
         sidebarItems[selectedItemIndex].innerText.slice(2);
       sidebarItems[selectedItemIndex].classList.remove("sidebar-selected");
@@ -90,7 +90,7 @@ document.addEventListener("keydown", (e) => {
     contentPages[selectedItemIndex].classList.add("hidden-content");
     contentPages[newIndex].classList.remove("hidden-content");
 
-    // Apply the effect when a new content page is loaded
+    // apply effect when new content page is loaded
     const newHeader = contentPages[newIndex].querySelector("h1");
     applyHackedEffect(newHeader);
   }
