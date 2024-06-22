@@ -119,3 +119,15 @@ h4 {
   margin-bottom: 0.25rem;
   transition: opacity 0.3s;
 }
+
+.regular-font {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+
+  font-size: 1.1rem;
+  letter-spacing: 0.25px;
+}
+
+.mono-font {
+  font-family: "SF Mono", monospace;
+}
