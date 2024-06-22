@@ -39,15 +39,53 @@ function applyHackedEffect(h1Element) {
   }, 15);
 }
 
-// apply effect on page load
-window.onload = () => {
-  const initialHeader = document.querySelector(
-    ".content:not(.hidden-content) h1"
-  );
-  applyHackedEffect(initialHeader);
-};
+let firstLoadTimeout;
+let firstLoad = true;
+let hintElement;
+
+function resetFirstLoadTimeout() {
+  if (firstLoad) {
+    clearTimeout(firstLoadTimeout);
+    firstLoadTimeout = setTimeout(() => {
+      console.log("No movement");
+      hintElement = document.createElement("div");
+      hintElement.style.height = "8rem";
+      hintElement.style.opacity = "0";
+      hintElement.style.transition = "opacity 0.5s ease-out";
+      hintElement.innerHTML = `<div
+      class="hint-container"
+      style="width: 100%; display: grid; grid-template-columns: 5% 65% 30%; column-gap: 1rem; padding-right: 2rem; font-size: 0.75rem; margin-top: 2rem;"
+      >
+      <div class="arrows-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+          <path
+            d="M201.4 137.4c12.5-12.5 32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 205.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160z"
+          />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+          <path
+            d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+          />
+        </svg>
+      </div>
+      <p class="hint-instructions">Use the up and down arrows to navigate</p>
+      </div>`;
+      const sideBarNav = document.querySelector(".sidebar-nav");
+
+      sideBarNav.appendChild(hintElement);
+      setTimeout(() => {
+        hintElement.style.opacity = "0.5";
+      }, 20);
+
+      firstLoad = false;
+    }, 8000);
+  }
+}
 
 document.addEventListener("keydown", (e) => {
+  resetFirstLoadTimeout();
   if (e.key === "ArrowUp" || e.key === "ArrowDown") {
     e.preventDefault();
     let selectedItemIndex;
@@ -93,32 +131,18 @@ document.addEventListener("keydown", (e) => {
     // apply effect when new content page is loaded
     const newHeader = contentPages[newIndex].querySelector("h1");
     applyHackedEffect(newHeader);
+
+    // Remove the hint element if it exists
+    if (hintElement && hintElement.parentNode) {
+      hintElement.parentNode.removeChild(hintElement);
+    }
   }
 });
 
-function showCommandOutputs() {
-  const commandOutputs = document.querySelectorAll(".command-output");
-  for (let i = 0; i < commandOutputs.length; i++) {
-    setTimeout(() => {
-      commandOutputs[i].style.opacity = 1;
-    }, i * 150);
-  }
-}
-
-function writeCommand() {
-  const commandPrompt = document.querySelector(".shell-prompt");
-  let promptTextContent = commandPrompt.textContent;
-  // const fullCommand = " ./skills.sh";
-  const fullCommand = [" ./", "skills", ".sh"];
-
-  for (let i = 0; i < fullCommand.length; i++) {
-    setTimeout(() => {
-      promptTextContent = promptTextContent + fullCommand[i];
-      commandPrompt.textContent = promptTextContent;
-    }, i * 100);
-  }
-
-  setTimeout(showCommandOutputs, 600);
-}
-
-setTimeout(writeCommand, 1500);
+window.onload = () => {
+  const initialHeader = document.querySelector(
+    ".content:not(.hidden-content) h1"
+  );
+  applyHackedEffect(initialHeader);
+  resetFirstLoadTimeout();
+};

@@ -28,7 +28,7 @@ h4 {
 }
 .sidebar-header img {
   width: 6rem;
-  height: 6rem;
+  height: auto;
   border-radius: 50%;
 }
 
