@@ -132,6 +132,7 @@ h4 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding-left: 2rem;
+  row-gap: 5rem;
 }
 
 .project-card {
@@ -142,6 +143,8 @@ h4 {
   border-radius: 0.75rem;
   display: flex;
   flex-direction: column;
+  transition: opacity 0.5s;
+  opacity: 0;
 }
 .project-card img {
   width: 100%;

@@ -129,6 +129,12 @@ document.addEventListener("keydown", (e) => {
     contentPages[selectedItemIndex].classList.remove("shown-content");
     contentPages[newIndex].classList.remove("hidden-content");
     contentPages[newIndex].classList.add("shown-content");
+    // console.log(newIndex);
+
+    const contentIndexEvent = new CustomEvent("contentIndexEvent", {
+      detail: { message: newIndex },
+    });
+    document.dispatchEvent(contentIndexEvent);
 
     // apply effect when new content page is loaded
     const newHeader = contentPages[newIndex].querySelector("h1");
