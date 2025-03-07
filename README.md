@@ -1,3 +1,8 @@
 # portfolio-website
 
-A repo to hold a portfolio site while I am developing it :)
+> [!IMPORTANT]  
+> this project is superseded by a [svelte+tailwind rewrite](https://github.com/nocdn/portfolio)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+this is a repo for the source code of my portfolio website
